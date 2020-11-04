@@ -1,0 +1,25 @@
+.sidebar-container {
+    position: fixed;
+    top: 0;
+    width: 50%;
+    height: 100vh;
+    z-index: 1;
+    background-color: white;
+    box-shadow: 0 0 1em 1em rgba(0, 0, 0, 0.5);
+
+    &.left {
+        left: 0;
+    }
+
+    &.right {
+        right: 0;
+    }
+
+    .button {
+        margin: 1em;
+    }
+
+    .sidebar-content {
+        padding: 1em;
+    }
+}

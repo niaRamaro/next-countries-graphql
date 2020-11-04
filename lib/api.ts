@@ -10,5 +10,30 @@ export const queries = {
                 code
             }
         }
+    `,
+    GET_COUNTRY: gql`
+        query getCountry($code: ID!) {
+            country(code: $code) {
+                capital
+                code
+                currency
+                name
+                native
+                phone
+                continent {
+                    code
+                    name
+                }
+                languages {
+                    code
+                    name
+                    native
+                }
+                states {
+                    code
+                    name
+                }
+            }
+        }
     `
 }

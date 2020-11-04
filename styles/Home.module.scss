@@ -1,3 +1,5 @@
+$transition-duration: 200ms;
+
 .container {
     min-height: 100vh;
     padding: 0 0.5rem;
@@ -23,8 +25,21 @@
                 margin: 1em;
                 text-align: center;
 
+                &:hover {
+                    cursor: pointer;
+
+                    .country-image {
+                        height: 105px;
+                    }
+
+                    .country-name {
+                        font-size: 1.1em;
+                    }
+                }
+
                 .country-image {
                     height: 100px;
+                    transition: all $transition-duration;
 
                     * {
                         width: 100%;
@@ -34,6 +49,7 @@
 
                 .country-name {
                     margin: 0.5em 0;
+                    transition: all $transition-duration;
                 }
             }
         }
