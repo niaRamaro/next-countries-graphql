@@ -1,6 +1,7 @@
 import request from 'graphql-request'
 import useSWR from 'swr'
 
+import CenteredLoader from './CenteredLoader'
 import Chip from './Chip'
 import CountryFlag from './CountryFlag'
 import MaterialIcon from './MaterialIcon'
@@ -18,7 +19,7 @@ export default function CountryDetail({
     )
 
     if (error) return <div>failed to load</div>
-    if (!data) return <div>loading...</div>
+    if (!data) return <CenteredLoader />
 
     const { country } = data
     document.title = country.name
