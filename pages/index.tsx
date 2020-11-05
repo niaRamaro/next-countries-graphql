@@ -70,6 +70,7 @@ export default function Home({ countries }: { countries: BaseCountry[] }) {
 
                 <CountryList
                     countries={countries}
+                    activeIndex={selectedCountryIndex}
                     onCountryClick={changeSelectedCountry}
                 />
             </main>
