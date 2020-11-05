@@ -8,13 +8,19 @@ import Sidebar from '../components/Sidebar'
 import styles from '../styles/Home.module.scss'
 import { API_URL, queries } from '../lib/api'
 
-export default function Home({ countries }) {
+export default function Home({
+    countries
+}: {
+    countries: { code: string; name: string }[]
+}) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
-    const [selectedCountry, setSelectedCountry] = useState()
+    const [selectedCountryIndex, setSelectedCountryIndex] = useState(null)
 
-    const handleClick = (countryCode) => {
-        setSelectedCountry(countryCode)
-        setIsSidebarOpen(true)
+    const changeSelectedCountry = (index) => {
+        if (index >= 0 && index < countries.length) {
+            setSelectedCountryIndex(index)
+            setIsSidebarOpen(true)
+        }
     }
 
     return (
@@ -30,8 +36,34 @@ export default function Home({ countries }) {
                         position="right"
                         handleClose={() => setIsSidebarOpen(false)}
                     >
+                        <div>
+                            <button
+                                onClick={() =>
+                                    changeSelectedCountry(
+                                        selectedCountryIndex - 1
+                                    )
+                                }
+                                disabled={selectedCountryIndex === 0}
+                            >
+                                Previous
+                            </button>
+                            <button
+                                onClick={() =>
+                                    changeSelectedCountry(
+                                        selectedCountryIndex + 1
+                                    )
+                                }
+                                disabled={
+                                    selectedCountryIndex ===
+                                    countries.length - 1
+                                }
+                            >
+                                Next
+                            </button>
+                        </div>
+
                         <CountryDetail
-                            countryCode={selectedCountry}
+                            countryCode={countries[selectedCountryIndex].code}
                         ></CountryDetail>
                     </Sidebar>
                 )}
@@ -41,7 +73,7 @@ export default function Home({ countries }) {
                         <div
                             className={styles['country-item']}
                             key={index}
-                            onClick={(_) => handleClick(country.code)}
+                            onClick={() => changeSelectedCountry(index)}
                         >
                             <div className={styles['country-image']}>
                                 <span
