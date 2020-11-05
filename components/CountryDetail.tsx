@@ -1,6 +1,7 @@
 import request from 'graphql-request'
 import useSWR from 'swr'
 
+import CountryFlag from './CountryFlag'
 import { API_URL, queries } from '../lib/api'
 
 export default function CountryDetail({
@@ -21,13 +22,9 @@ export default function CountryDetail({
 
     return (
         <div className="country">
+            <CountryFlag country={country} />
+
             <ul>
-                <li>
-                    <span>Name : </span>
-                    <span>
-                        {country.name} ({country.native})
-                    </span>
-                </li>
                 <li>
                     <span>Capital : </span>
                     <span>{country.capital}</span>

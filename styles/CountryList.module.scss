@@ -1,0 +1,13 @@
+.country-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    .country-item {
+        width: calc(20% - 2em);
+        margin: 1em;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

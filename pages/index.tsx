@@ -4,15 +4,13 @@ import { request } from 'graphql-request'
 import { useState } from 'react'
 
 import CountryDetail from '../components/CountryDetail'
+import CountryList from '../components/CountryList'
 import Sidebar from '../components/Sidebar'
 import styles from '../styles/Home.module.scss'
 import { API_URL, queries } from '../lib/api'
+import { BaseCountry } from '../types/Country'
 
-export default function Home({
-    countries
-}: {
-    countries: { code: string; name: string }[]
-}) {
+export default function Home({ countries }: { countries: BaseCountry[] }) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
     const [selectedCountryIndex, setSelectedCountryIndex] = useState(null)
 
@@ -68,24 +66,10 @@ export default function Home({
                     </Sidebar>
                 )}
 
-                <div className={styles['country-container']}>
-                    {countries.map((country, index) => (
-                        <div
-                            className={styles['country-item']}
-                            key={index}
-                            onClick={() => changeSelectedCountry(index)}
-                        >
-                            <div className={styles['country-image']}>
-                                <span
-                                    className={`flag-icon flag-icon-${country.code.toLowerCase()}`}
-                                ></span>
-                            </div>
-                            <div className={styles['country-name']}>
-                                {country.name}
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                <CountryList
+                    countries={countries}
+                    onCountryClick={changeSelectedCountry}
+                />
             </main>
         </div>
     )
