@@ -13,3 +13,13 @@ a {
 * {
     box-sizing: border-box;
 }
+
+button {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+button:hover {
+    cursor: pointer;
+}

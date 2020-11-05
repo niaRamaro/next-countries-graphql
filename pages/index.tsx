@@ -5,6 +5,7 @@ import { useState } from 'react'
 
 import CountryDetail from '../components/CountryDetail'
 import CountryList from '../components/CountryList'
+import MaterialIcon from '../components/MaterialIcon'
 import Sidebar from '../components/Sidebar'
 import styles from '../styles/Home.module.scss'
 import { API_URL, queries } from '../lib/api'
@@ -32,9 +33,10 @@ export default function Home({ countries }: { countries: BaseCountry[] }) {
                 {isSidebarOpen && (
                     <Sidebar
                         position="right"
+                        width="40%"
                         handleClose={() => setIsSidebarOpen(false)}
                     >
-                        <div>
+                        <div className={`${styles.navigation}`}>
                             <button
                                 onClick={() =>
                                     changeSelectedCountry(
@@ -43,7 +45,7 @@ export default function Home({ countries }: { countries: BaseCountry[] }) {
                                 }
                                 disabled={selectedCountryIndex === 0}
                             >
-                                Previous
+                                <MaterialIcon icon="chevron_left" />
                             </button>
                             <button
                                 onClick={() =>
@@ -56,7 +58,7 @@ export default function Home({ countries }: { countries: BaseCountry[] }) {
                                     countries.length - 1
                                 }
                             >
-                                Next
+                                <MaterialIcon icon="chevron_right" />
                             </button>
                         </div>
 
