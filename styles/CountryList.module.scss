@@ -1,9 +1,11 @@
 .country-container {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
 
     .country-item {
         width: calc(20% - 2em);
+        min-width: 15vw;
         margin: 1em;
 
         &:hover {

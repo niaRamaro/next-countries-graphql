@@ -1,24 +1,19 @@
 .sidebar-container {
-    position: fixed;
+    position: sticky;
     top: 0;
     height: 100vh;
-    z-index: 1;
     background-color: white;
-    box-shadow: 0 0 1em 1em rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 1em 0px grey;
     display: flex;
     flex-direction: column;
 
     &.left {
-        left: 0;
-
         .button {
             text-align: right;
         }
     }
 
     &.right {
-        right: 0;
-
         .button {
             text-align: left;
         }

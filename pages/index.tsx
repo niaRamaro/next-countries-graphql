@@ -30,49 +30,53 @@ export default function Home({ countries }: { countries: BaseCountry[] }) {
             </Head>
 
             <main className={styles.main}>
-                {isSidebarOpen && (
-                    <Sidebar
-                        position="right"
-                        width="40%"
-                        handleClose={() => setIsSidebarOpen(false)}
-                    >
-                        <div className={`${styles.navigation}`}>
-                            <button
-                                onClick={() =>
-                                    changeSelectedCountry(
-                                        selectedCountryIndex - 1
-                                    )
-                                }
-                                disabled={selectedCountryIndex === 0}
-                            >
-                                <MaterialIcon icon="chevron_left" />
-                            </button>
-                            <button
-                                onClick={() =>
-                                    changeSelectedCountry(
-                                        selectedCountryIndex + 1
-                                    )
-                                }
-                                disabled={
-                                    selectedCountryIndex ===
-                                    countries.length - 1
-                                }
-                            >
-                                <MaterialIcon icon="chevron_right" />
-                            </button>
-                        </div>
+                <div className={styles.content}>
+                    <CountryList
+                        countries={countries}
+                        activeIndex={selectedCountryIndex}
+                        onCountryClick={changeSelectedCountry}
+                    />
 
-                        <CountryDetail
-                            countryCode={countries[selectedCountryIndex].code}
-                        ></CountryDetail>
-                    </Sidebar>
-                )}
+                    {isSidebarOpen && (
+                        <Sidebar
+                            position="right"
+                            width="40%"
+                            handleClose={() => setIsSidebarOpen(false)}
+                        >
+                            <div className={`${styles.navigation}`}>
+                                <button
+                                    onClick={() =>
+                                        changeSelectedCountry(
+                                            selectedCountryIndex - 1
+                                        )
+                                    }
+                                    disabled={selectedCountryIndex === 0}
+                                >
+                                    <MaterialIcon icon="chevron_left" />
+                                </button>
+                                <button
+                                    onClick={() =>
+                                        changeSelectedCountry(
+                                            selectedCountryIndex + 1
+                                        )
+                                    }
+                                    disabled={
+                                        selectedCountryIndex ===
+                                        countries.length - 1
+                                    }
+                                >
+                                    <MaterialIcon icon="chevron_right" />
+                                </button>
+                            </div>
 
-                <CountryList
-                    countries={countries}
-                    activeIndex={selectedCountryIndex}
-                    onCountryClick={changeSelectedCountry}
-                />
+                            <CountryDetail
+                                countryCode={
+                                    countries[selectedCountryIndex].code
+                                }
+                            ></CountryDetail>
+                        </Sidebar>
+                    )}
+                </div>
             </main>
         </div>
     )

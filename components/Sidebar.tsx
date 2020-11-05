@@ -30,6 +30,7 @@ export default function Sidebar({
             <style jsx>{`
                 .sidebar-container {
                     width: ${width};
+                    min-width: ${width};
                 }
             `}</style>
         </>
