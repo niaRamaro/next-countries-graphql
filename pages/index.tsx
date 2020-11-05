@@ -3,8 +3,8 @@ import { GetStaticProps } from 'next'
 import { request } from 'graphql-request'
 import { useState } from 'react'
 
-import CountryDetail from '../components/countryDetail'
-import Sidebar from '../components/sidebar'
+import CountryDetail from '../components/CountryDetail'
+import Sidebar from '../components/Sidebar'
 import styles from '../styles/Home.module.scss'
 import { API_URL, queries } from '../lib/api'
 
