@@ -22,6 +22,11 @@ export default function Home({ countries }: { countries: BaseCountry[] }) {
         }
     }
 
+    const closeSidebar = () => {
+        setIsSidebarOpen(false)
+        setSelectedCountryIndex(null)
+    }
+
     return (
         <div className={styles.container}>
             <Head>
@@ -41,7 +46,7 @@ export default function Home({ countries }: { countries: BaseCountry[] }) {
                         <Sidebar
                             position="right"
                             width="40%"
-                            handleClose={() => setIsSidebarOpen(false)}
+                            handleClose={closeSidebar}
                         >
                             <div className={`${styles.navigation}`}>
                                 <button
