@@ -1,0 +1,28 @@
+.infos-container {
+    margin: 2em;
+
+    .info {
+        display: flex;
+        align-items: center;
+
+        .info-label {
+            display: flex;
+            align-items: center;
+            margin-right: 1em;
+
+            .label-icon {
+                margin-right: 0.5em;
+            }
+        }
+    }
+
+    .info-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .info,
+    .info-list {
+        margin: 1em;
+    }
+}
